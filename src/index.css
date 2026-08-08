@@ -1,0 +1,117 @@
+@import 'tailwindcss';
+
+@theme {
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-script: 'Great Vibes', cursive;
+    --font-sans: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+
+    --color-blush: #fff5f6;
+    --color-petal: #f3c9d2;
+    --color-rose: #c45c74;
+    --color-rose-deep: #9a3d55;
+    --color-wine: #5c2436;
+    --color-champagne: #c9a07a;
+    --color-mist: #f8e9ec;
+
+    --animate-float: float 8s ease-in-out infinite;
+    --animate-float-slow: float 12s ease-in-out infinite;
+    --animate-rise: rise 1s ease-out both;
+    --animate-bloom: bloom 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    --animate-heartbeat: heartbeat 1.4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-18px) rotate(4deg);
+    }
+}
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bloom {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes heartbeat {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    35% {
+        transform: scale(1.08);
+    }
+    55% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes drift {
+    0% {
+        transform: translate3d(0, 110vh, 0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.55;
+    }
+    100% {
+        transform: translate3d(40px, -20vh, 0) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100svh;
+        font-family: var(--font-sans);
+        color: var(--color-wine);
+        background: var(--color-blush);
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    #root {
+        min-height: 100svh;
+    }
+
+    ::selection {
+        background: color-mix(in oklab, var(--color-rose) 35%, white);
+        color: var(--color-wine);
+    }
+}
+
+@layer utilities {
+    .animate-drift {
+        animation: drift linear infinite;
+    }
+}
